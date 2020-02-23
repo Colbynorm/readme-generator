@@ -56,5 +56,19 @@ function promptUser() {
             name: "email",
             message: "What Is Your GitHub email?",
         },
-    ])
+    ]);
 }
+
+function generateHTML(answers) {
+    return
+}
+
+async function init() {
+    try {
+        const answer = await promptUser();
+        const html = generateHTML(answers);
+        await writeFileAsync("index.html", html);
+    }
+}
+
+init();
