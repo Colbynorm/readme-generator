@@ -61,10 +61,18 @@ function promptUser() {
 }
 
 function generateMD(answers, data) {
-    return `# Project Description: ${answers.description} \n
-Badge: ${answers.badge} \n
-Email: ${data.email} \n
-![Profile Pic](${data.avatar_url})`
+    return `Badge: ${answers.badge} \n
+Name: ${answers.name}\n
+Project Description: ${answers.description}
+Table of Contents: ${answers.tableOfContents}\n
+Installation: ${answers.installation}\n
+Usage: ${answers.usage}\n
+License: ${answers.license}\n
+Contributing: ${answers.contributing}\n
+Tests: ${answers.tests}\n
+Username: ${answers.username}\n
+![Profile Pic](${data.avatar_url})\n
+Email: ${data.email} \n`
 }
 
 async function init() {
