@@ -1,4 +1,5 @@
 const inquirer = require("inquirer");
+const axios = require("axios");
 const fs = require("fs");
 const util = require("util");
 
@@ -53,21 +54,32 @@ function promptUser() {
         },
         {
             type: "input",
-            name: "email",
-            message: "What Is Your GitHub email?",
+            name: "username",
+            message: "What Is Your GitHub username?",
         },
     ]);
 }
 
-function generateHTML(answers) {
-    return
+function generateMD(answers, data) {
+    return `# Project Description: ${answers.description} \n
+Badge: ${answers.badge} \n
+Email: ${data.email} \n
+![Profile Pic](${data.avatar_url})`
 }
 
 async function init() {
     try {
-        const answer = await promptUser();
-        const html = generateHTML(answers);
-        await writeFileAsync("index.html", html);
+        const answers = await promptUser();
+        //console.log(answers)
+
+        let res = await axios.get(`https://api.github.com/users/${answers.username}`)
+        //let res = await axios.get("https://api.github.com/users/" + username)
+
+        const md = generateMD(answers, res.data);
+        //console.log(md)
+        await writeFileAsync("README.md", md);
+    } catch(err){
+        throw err;
     }
 }
 
