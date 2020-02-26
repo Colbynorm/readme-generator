@@ -30,12 +30,12 @@ function promptUser() {
         {
             type: "input",
             name: "installation",
-            message: " "
+            message: "What Command Should Be Run?"
         },
         {
             type: "input",
             name: "Usage",
-            message: " "
+            message: "What Does The User Need To Know About Using This Repo?"
         },
         {
             type: "input",
@@ -50,7 +50,7 @@ function promptUser() {
         {
             type: "input",
             name: "tests",
-            message: " "
+            message: "What Command Should Be Rub To Test?"
         },
         {
             type: "input",
